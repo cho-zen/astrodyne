@@ -1,0 +1,39 @@
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+        <a href="/" class="navbar-brand ps-5 me-0">
+            <h1 class="text-white m-0">Astrodynetdi</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/" class="nav-item nav-link {% if request.path == '/' %}active {% endif %}">Home</a>
+                 <div class="nav-item dropdown">
+                    <a href="/product/" class="nav-link dropdown-toggle {% if request.path == '/product/' %}active {% endif %}">Product</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        {% for product in dropdown_product %}
+                        <a href="/product/{{product.slug}}/" class="dropdown-item">{{product.title}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                 <div class="nav-item dropdown">
+                    <a href="/application/" class="nav-link dropdown-toggle {% if request.path == '/application/' %}active {% endif %}">Applications</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        {% for application in dropdown_application %}
+                        <a href="/application/{{application.slug}}/" class="dropdown-item">{{application.title}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="/contact-us/" class="nav-item nav-link {% if request.path == '/contact-us/' %}active {% endif %}">Contact</a>
+            </div>
+            <a href="/contact-us/" class="btn px-3 d-none d-lg-block" style="background-color:var(--primary); color:white;">Request A Quote</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
